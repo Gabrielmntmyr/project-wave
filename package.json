@@ -12,6 +12,7 @@
     "types:supabase": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/supabase.ts"
   },
   "dependencies": {
+    "@be-tech/watermarkjs": "^1.0.2-beta.0",
     "@hookform/resolvers": "^3.6.0",
     "@radix-ui/react-accordion": "^1.1.2",
     "@radix-ui/react-alert-dialog": "^1.0.5",
@@ -68,7 +69,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "3.4.1",
-    "tempo-devtools": "^2.0.102",
+    "tempo-devtools": "^2.0.106",
     "typescript": "^5.8.2",
     "vite": "^6.2.3"
   }
