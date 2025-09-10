@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface Photo {
   id: string;
@@ -34,7 +34,22 @@ interface CartProviderProps {
 }
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-  const [cartItems, setCartItems] = useState<Photo[]>([]);
+  const [cartItems, setCartItems] = useState<Photo[]>(() => {
+    const savedCart = localStorage.getItem('cart');
+    if (savedCart) {
+      try {
+        return JSON.parse(savedCart);
+      } catch {
+        localStorage.removeItem('cart');
+      }
+    }
+    return [];
+  });
+
+  // Save cart items to localStorage whenever cart changes
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const addToCart = (photo: Photo) => {
     // Check if the photo is already in the cart

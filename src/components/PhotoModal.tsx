@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X, ShoppingCart } from "lucide-react";
+import { Dialog, DialogClose, DialogContent } from "@/components/ui/dialog";
+import { ChevronLeft, ChevronRight, ShoppingCart, X } from "lucide-react";
+import { useState } from "react";
+import { useCart } from "../context/CartContext";
 
 interface Photo {
   id: string;
@@ -77,6 +78,8 @@ const PhotoModal = ({
     setLoading(false);
   };
 
+  const { addToCart } = useCart();
+
   const handleNavigation = (direction: "prev" | "next") => {
     setLoading(true);
     setPurchased(false);
@@ -85,6 +88,10 @@ const PhotoModal = ({
 
   const handlePurchase = () => {
     // Add to cart and show feedback
+    console.log("Adding to cart")
+    addToCart(currentPhoto);
+    console.log(currentPhoto)
+    console.log("Added item to cart")
     setTimeout(() => {
       setPurchasing(false);
       setPurchased(true);

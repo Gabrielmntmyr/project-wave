@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Navigation from "../components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { CreditCard, Check, Trash2 } from "lucide-react";
+import { Check, CreditCard, Trash2 } from "lucide-react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navigation from "../components/Navigation";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
